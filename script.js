@@ -253,41 +253,44 @@ function initLightbox() {
    ─────────────────────────────────────────── */
 function initContactForm() {
   const form = document.getElementById("portfolio-contact-form");
-  if (!form) return;
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
+  form.addEventListener("submit", function (e) {
 
-    const name = document.getElementById("form-name").value;
-    const email = document.getElementById("form-email").value;
-    const subject = document.getElementById("form-subject").value;
-    const message = document.getElementById("form-message").value;
+      e.preventDefault();
 
-    const targetEmail = "vedavedu333@gmail.com";
-    const emailSubject = encodeURIComponent(`Portfolio Message: ${subject}`);
-    const emailBody = encodeURIComponent(
-      `Name: ${name}\n` +
-      `Email: ${email}\n\n` +
-      `Message:\n${message}`
-    );
+      const button = document.getElementById("btn-send-message");
 
-    const mailtoUrl = `mailto:${targetEmail}?subject=${emailSubject}&body=${emailBody}`;
-    window.location.href = mailtoUrl;
+      button.disabled = true;
+      button.innerHTML = "Sending...";
 
-    const submitBtn = document.getElementById("btn-send-message");
-    if (submitBtn) {
-      const originalHTML = submitBtn.innerHTML;
-      submitBtn.innerHTML = `<i class="fa-solid fa-check"></i> Opening Mail Client...`;
-      submitBtn.style.background = "#2EC4B6";
-      submitBtn.style.color = "#000";
+      emailjs.sendForm(
+          "service_iyj9pqg",
+          "template_6pez5ux",
+          this
+      )
+      .then(() => {
 
-      setTimeout(() => {
-        submitBtn.innerHTML = originalHTML;
-        submitBtn.style.background = "";
-        submitBtn.style.color = "";
-        form.reset();
-      }, 3500);
-    }
+          alert("✅ Message sent successfully!");
+
+          form.reset();
+
+          button.disabled = false;
+          button.innerHTML =
+          '<i class="fa-solid fa-paper-plane"></i> Send Message';
+
+      })
+      .catch((error) => {
+
+          console.error(error);
+
+          alert("❌ Failed to send message.");
+
+          button.disabled = false;
+          button.innerHTML =
+          '<i class="fa-solid fa-paper-plane"></i> Send Message';
+
+      });
+
   });
 }
 
@@ -317,3 +320,4 @@ function initSendBtnPulse() {
 
   observer.observe(contactSection);
 }
+

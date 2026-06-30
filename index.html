@@ -550,22 +550,22 @@
         <div class="contact-form-card animate-el" data-anim="slideAngleIn">
           <form id="portfolio-contact-form" autocomplete="off">
             <div class="form-group">
-              <input type="text" id="form-name" placeholder=" " required>
+              <input type="text" id="form-name" placeholder=" " name="name" required>
               <label for="form-name">Full Name</label>
               <span class="form-underline"></span>
             </div>
             <div class="form-group">
-              <input type="email" id="form-email" placeholder=" " required>
+              <input type="email" id="form-email" placeholder=" " name="email"required>
               <label for="form-email">Email Address</label>
               <span class="form-underline"></span>
             </div>
             <div class="form-group">
-              <input type="text" id="form-subject" placeholder=" " required>
+              <input type="text" id="form-subject" placeholder=" " name="subject" required>
               <label for="form-subject">Subject</label>
               <span class="form-underline"></span>
             </div>
             <div class="form-group">
-              <textarea id="form-message" rows="5" placeholder=" " required></textarea>
+              <textarea id="form-message" rows="5" placeholder=" " name="message" required></textarea>
               <label for="form-message">Message</label>
               <span class="form-underline"></span>
             </div>
@@ -631,6 +631,14 @@
   </div>
 
   <!-- JavaScript -->
+  <script
+          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script>
+    emailjs.init({
+        publicKey: "GQKU86H9lGv8tm_3H",
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
