@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- ═══════════════ NAVIGATION ═══════════════ -->
   <nav class="navbar" id="main-navbar">
@@ -48,6 +49,27 @@
 
   <!-- ═══════════════ PAGE 1 — LANDING ═══════════════ -->
   <section id="landing">
+    <div class="hero-3d-stage" aria-hidden="true">
+      <canvas id="hero-three-canvas"></canvas>
+      <div class="hero-wire-cube hero-wire-cube-one">
+        <span class="cube-face cube-front"></span>
+        <span class="cube-face cube-back"></span>
+        <span class="cube-face cube-right"></span>
+        <span class="cube-face cube-left"></span>
+        <span class="cube-face cube-top"></span>
+        <span class="cube-face cube-bottom"></span>
+      </div>
+      <div class="hero-wire-cube hero-wire-cube-two">
+        <span class="cube-face cube-front"></span>
+        <span class="cube-face cube-back"></span>
+        <span class="cube-face cube-right"></span>
+        <span class="cube-face cube-left"></span>
+        <span class="cube-face cube-top"></span>
+        <span class="cube-face cube-bottom"></span>
+      </div>
+      <div class="hero-orbit-ring hero-orbit-ring-one"></div>
+      <div class="hero-orbit-ring hero-orbit-ring-two"></div>
+    </div>
     <div class="section-container">
       <div class="hero-content">
         <h1 class="hero-name animate-el" >Veda Hanumanahallimath</h1>
@@ -632,12 +654,9 @@
 
   <!-- JavaScript -->
   <script
-          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-  </script>
-  <script>
-    emailjs.init({
-        publicKey: "GQKU86H9lGv8tm_3H",
-    });
+          async
+          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+          onload="emailjs.init({ publicKey: 'GQKU86H9lGv8tm_3H' })">
   </script>
   <script src="script.js"></script>
 </body>
